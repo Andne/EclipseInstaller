@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?if $(var.Platform) = x64 ?>
+  <?define PlatformProgramFilesFolder = "ProgramFiles64Folder" ?>
+<?else ?>
+  <?define PlatformProgramFilesFolder = "ProgramFilesFolder" ?>
+<?endif ?>
+
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="*" Manufacturer="Tridigee Solutions" Name="Eclipse CDT Toolset" Language="1033"
+           Version="4.6.2.0" UpgradeCode="d3947a15-9cbc-4f50-9887-c89331981e88">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<MediaTemplate EmbedCab="yes" />
+
+		<Feature Id="EclipseCDTFeature" Title="Eclipse CDT Toolset" Level="1">
+			<ComponentGroupRef Id="EclipsePlatform" />
+		</Feature>
+	</Product>
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="$(var.PlatformProgramFilesFolder)">
+        <Directory Id="EclipseVersion" Name="Eclipse Neon">
+				  <Directory Id="INSTALLFOLDER" Name="CDT" />
+        </Directory>
+			</Directory>
+		</Directory>
+	</Fragment>
+</Wix>
