@@ -16,5 +16,9 @@ End {
 	$ProjectRoot = Split-Path $PSScriptRoot
 	$PackageFolder = Join-Path -Path $ProjectRoot -ChildPath packages
 
+	if (-not (Test-Path $PackageFolder)) {
+		New-Item -Path $PackageFolder -ItemType Directory
+	}
+
 	Invoke-WebRequest -Uri $EclipseDownloadPage -Body $Parameters -Method Get -OutFile (Join-Path $PackageFolder $ArchiveFilename)
 }
