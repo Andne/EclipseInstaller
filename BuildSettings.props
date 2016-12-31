@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <EclipseVersion>neon-2</EclipseVersion>
+    <EclipseDistribution>cpp</EclipseDistribution>
+  </PropertyGroup>
+
+  <!-- Shouldn't need to modify this section unless adding more architectures or something -->
+  <Choose>
+    <When Condition="'$(Platform)' == 'x64'">
+      <PropertyGroup>
+        <EclipseArchitecture>win32-x86_64</EclipseArchitecture>
+      </PropertyGroup>
+    </When>
+    <Otherwise>
+      <PropertyGroup>
+        <EclipseArchitecture>win32</EclipseArchitecture>
+      </PropertyGroup>
+    </Otherwise>
+  </Choose>
+
+  <!-- Calculate properties from the above values -->
+  <PropertyGroup>
+    <ExtractionFolder>$(MSBuildThisFileDirectory)packages\$(MSBuildProjectName)_$(Platform)\</ExtractionFolder>
+    <EclipseZipFile>eclipse-$(EclipseDistribution)-$(EclipseVersion)-$(EclipseArchitecture).zip</EclipseZipFile>
+    <ExtractionFolderRelative>$([MSBuild]::MakeRelative($(MSBuildProjectFileDirectory), $(ExtractionFolder)))</ExtractionFolderRelative>
+  </PropertyGroup>
+</Project>

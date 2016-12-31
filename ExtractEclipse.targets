@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <Import Project="$(MSBuildExtensionsPath32)\ExtensionPack\4.0\MSBuild.ExtensionPack.tasks" />
+
+  <PropertyGroup>
+    <HarvestDependsOn>
+      ExtractEclipse;
+      $(HarvestDependsOn)
+    </HarvestDependsOn>
+  </PropertyGroup>
+
+  <Target Name="ExtractEclipse">
+    <Delete Condition="exists('$(ExtractionFolder)')"
+            Files="$(ExtractionFolder)" ContinueOnError="true" />
+    <MSBuild.ExtensionPack.Compression.Zip TaskAction="Extract"
+                                           ExtractPath="$(ExtractionFolder)"
+                                           ZipFileName="$(MSBuildThisFileDirectory)packages\$(EclipseZipFile)" />
+
+    <!-- Add the just extracted folder to the build -->
+    <ItemGroup>
+      <HarvestDirectory Include="$(ExtractionFolder)eclipse">
+        <ComponentGroupName>EclipsePlatform</ComponentGroupName>
+        <SuppressRootDirectory>true</SuppressRootDirectory>
+        <DirectoryRefId>INSTALLFOLDER</DirectoryRefId>
+        <PreprocessorVariable>var.EclipseSourceDir</PreprocessorVariable>
+        <SuppressRegistry>true</SuppressRegistry>
+      </HarvestDirectory>
+    </ItemGroup>
+    <PropertyGroup>
+      <DefineConstants>$(DefineConstants);EclipseSourceDir=$(ExtractionFolder)eclipse</DefineConstants>
+    </PropertyGroup>
+  </Target>
+</Project>
