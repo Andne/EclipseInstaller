@@ -11,9 +11,8 @@
   </PropertyGroup>
 
   <Target Name="ExtractEclipse">
-    <Message Condition="exist('$(ExtractionFolder)'"
-             Text="Removing previously extracted directory $(ExtractionFolder)" />
-    <RemoveDir Condition="exist('$(ExtractionFolder)'"
+    <!-- Remove any previously extracted folder, extract the zip file -->
+    <RemoveDir Condition="exists('$(ExtractionFolder)')"
                Directories="$(ExtractionFolder)" ContinueOnError="true" />
     <MSBuild.ExtensionPack.Compression.Zip TaskAction="Extract"
                                            ExtractPath="$(ExtractionFolder)"
