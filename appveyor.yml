@@ -1,0 +1,16 @@
+# Appveyor.yml file to build installer packages for eclipse
+
+skip_tags: true
+
+platform: x64
+
+configuration: Release
+
+before_build:
+  - ps: build\DownloadEclipse.ps1 -Version neon-2 -Distribution cpp
+
+build:
+  project: EclipseCDT\EclipseCDT.wixproj
+
+artifacts:
+  - path: EclipseCDT\bin\$(Platform)\$(configuration)\*.msi
