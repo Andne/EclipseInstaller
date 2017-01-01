@@ -7,6 +7,7 @@ platform: x64
 configuration: Release
 
 before_build:
+  - ps: nuget.exe restore -NonInteractive EclipseInstaller.sln
   - ps: build\DownloadEclipse.ps1 -Version neon-2 -Distribution cpp -Architecture $(Platform)
 
 build:
