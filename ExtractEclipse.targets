@@ -1,7 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
-  <Import Project="$(MSBuildExtensionsPath32)\ExtensionPack\4.0\MSBuild.ExtensionPack.tasks" />
+  <PropertyGroup>
+    <MSBuildExtensionPackPath>$(MSBuildThisFileDirectory)\packages\MSBuild.ExtensionPack.1.8.0\build\net40\</MSBuildExtensionPackPath>
+  </PropertyGroup>
+  
+  <!-- Fallback in case package restore hasn't run -->
+  <PropertyGroup Condition="!exists('$(MSBuildExtenionPackPath)')">
+    <MSBuildExtensionPackPath>$(MSBuildExtensionsPath32)\ExtensionPack\4.0\</MSBuildExtensionPackPath>
+  </PropertyGroup>
+  
+  <Import Project="$(MSBuildExtensionPackPath)MSBuild.ExtensionPack.tasks" />
 
   <PropertyGroup>
     <HarvestDependsOn>
