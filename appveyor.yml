@@ -8,10 +8,10 @@ configuration: Release
 
 before_build:
   - ps: nuget.exe restore -NonInteractive EclipseInstaller.sln
-  - ps: build\DownloadEclipse.ps1 -Version neon-2 -Distribution cpp -Architecture $(Platform)
+  - ps: build\DownloadEclipse.ps1 -Version neon-2 -Distribution cpp -Architecture $env:Platform
 
 build:
   project: setup\EclipseCDT\EclipseCDT.wixproj
 
 artifacts:
-  - path: setup\EclipseCDT\bin\$(Platform)\$(configuration)\*.msi
+  - path: setup\EclipseCDT\bin\$(Platform)\$(Configuration)\*.msi
