@@ -10,7 +10,7 @@ before_build:
   - ps: build\DownloadEclipse.ps1 -Version neon-2 -Distribution cpp
 
 build:
-  project: src\EclipseCDT\EclipseCDT.wixproj
+  project: setup\EclipseCDT\EclipseCDT.wixproj
 
 artifacts:
-  - path: src\EclipseCDT\bin\$(Platform)\$(configuration)\*.msi
+  - path: setup\EclipseCDT\bin\$(Platform)\$(configuration)\*.msi
