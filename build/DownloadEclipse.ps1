@@ -1,13 +1,20 @@
 ﻿Param(
 	[parameter(Mandatory = $true)][string]$Version,
-	[parameter(Mandatory = $true)][string]$Distribution
+	[parameter(Mandatory = $true)][string]$Distribution,
+	[parameter(Mandatory = $false)][string]$Architecture = 'x64'
 )
 End {
-	$BaseURL = 'http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/2/eclipse-cpp-neon-2-win32-x86_64.zip&r=1'
-
-	$ArchiveFilename = "eclipse-$Distribution-$Version-win32-x86_64.zip"
-
 	$EclipseDownloadPage = 'https://www.eclipse.org/downloads/download.php'
+
+	if ($Architecture -eq 'x64') {
+		$EclipseArchSuffix = '-x86_64'
+	}
+	else {
+		$EclipseArchSuffix = ''
+	}
+
+	$ArchiveFilename = "eclipse-$Distribution-$Version-win32$EclipseArchSuffix.zip"
+
 	$Parameters = @{
 		file = "/technology/epp/downloads/release/neon/2/$ArchiveFilename"
 		r = "1"

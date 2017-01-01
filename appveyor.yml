@@ -7,7 +7,7 @@ platform: x64
 configuration: Release
 
 before_build:
-  - ps: build\DownloadEclipse.ps1 -Version neon-2 -Distribution cpp
+  - ps: build\DownloadEclipse.ps1 -Version neon-2 -Distribution cpp -Architecture $(Platform)
 
 build:
   project: setup\EclipseCDT\EclipseCDT.wixproj
