@@ -26,4 +26,9 @@
     <EclipseZipFile>eclipse-$(EclipseDistribution)-$(EclipseVersion)-$(EclipseArchitecture).zip</EclipseZipFile>
     <ExtractionFolderRelative>$([MSBuild]::MakeRelative($(MSBuildProjectFileDirectory), $(ExtractionFolder)))</ExtractionFolderRelative>
   </PropertyGroup>
+
+  <!-- Other settings that should always be defined -->
+  <PropertyGroup>
+    <DefineSolutionProperties>false</DefineSolutionProperties>
+  </PropertyGroup>
 </Project>
