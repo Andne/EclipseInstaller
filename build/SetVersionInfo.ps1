@@ -26,7 +26,7 @@ End {
 	Update-AppveyorBuild -Version $FullVersion
 
 	# Create a file to be included in the setup projects
-	Write-WixIncludeFile -FullVersion $FullVersion
+	Write-WixIncludeFile -FullVersion $FullVersion -ReleaseName ((Get-Culture).TextInfo.ToTitleCase($VersionParts[0]))
 }
 Begin {
 	# Define the appveyor function in case we aren't actually running on appveyor
@@ -58,14 +58,16 @@ Begin {
 
 	function Write-WixIncludeFile {
 		Param(
-			[parameter(Mandatory = $true)][string]$FullVersion
+			[parameter(Mandatory = $true)][string]$FullVersion,
+			[parameter(Mandatory = $true)][string]$ReleaseName
 		)
 
 		$WXIVersionFile = Join-Path (Join-Path $PSScriptRoot include) version.wxi
 
 		"<?xml version='1.0'?>" | Out-File -FilePath $WXIVersionFile -Force
 		"<Include xmlns='http://schemas.microsoft.com/wix/2006/wi'>" | Out-File -FilePath $WXIVersionFile -Append
-		"<?define FullVersion = '$FullVersion' ?>" | Out-File -FilePath $WXIVersionFile -Append
+		"  <?define FullVersion = '$FullVersion' ?>" | Out-File -FilePath $WXIVersionFile -Append
+		"  <?define EclipseRelease = '$ReleaseName' ?>" | Out-File -FilePath $WXIVersionFile -Append
 		"</Include>" | Out-File -FilePath $WXIVersionFile -Append
 	}
 }
