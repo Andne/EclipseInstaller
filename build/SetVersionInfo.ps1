@@ -22,7 +22,11 @@ End {
 
 	$FullVersion = "$MajorMinor.$Point.$Build"
 
+	# Tell appveyor about the calculated version information
 	Update-AppveyorBuild -Version $FullVersion
+
+	# Create a file to be included in the setup projects
+	Write-WixIncludeFile -FullVersion $FullVersion
 }
 Begin {
 	# Define the appveyor function in case we aren't actually running on appveyor
@@ -50,5 +54,18 @@ Begin {
 			'mars'   { Write-Output '4.5' }
 			'neon'   { Write-Output '4.6' }
 		}
+	}
+
+	function Write-WixIncludeFile {
+		Param(
+			[parameter(Mandatory = $true)][string]$FullVersion
+		)
+
+		$WXIVersionFile = Join-Path (Join-Path $PSScriptRoot include) version.wxi
+
+		"<?xml version='1.0'?>" | Out-File -FilePath $WXIVersionFile -Force
+		"<Include xmlns='http://schemas.microsoft.com/wix/2006/wi'>" | Out-File -FilePath $WXIVersionFile -Append
+		"<?define FullVersion = '$FullVersion' ?>" | Out-File -FilePath $WXIVersionFile -Append
+		"</Include>" | Out-File -FilePath $WXIVersionFile -Append
 	}
 }
