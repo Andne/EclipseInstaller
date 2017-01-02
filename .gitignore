@@ -57,6 +57,7 @@ artifacts/
 *.pidb
 *.svclog
 *.scc
+*.bak
 
 # TFS 2012 Local Workspace
 $tf/
