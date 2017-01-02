@@ -1,5 +1,5 @@
 Param(
-	[parameter(Mandatory = $true)][string]$Version = $env:EclipseRelease
+	[string]$Version = $env:EclipseRelease
 )
 End {
 	$VersionParts = $Version.Split('.')
