@@ -13,6 +13,7 @@ environment:
   EclipseDistribution: cpp
 
 before_build:
+  - ps: build\SetVersionInfo.ps1
   - ps: nuget.exe restore -NonInteractive EclipseInstaller.sln
   - ps: build\DownloadEclipse.ps1
 
