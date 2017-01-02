@@ -2,7 +2,7 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <PropertyGroup>
-    <MSBuildExtensionPackTasks>$(MSBuildThisFileDirectory)\packages\MSBuild.ExtensionPack.1.8.0\build\net40\MSBuild.ExtensionPack.tasks</MSBuildExtensionPackTasks>
+    <MSBuildExtensionPackTasks>$(MSBuildThisFileDirectory)packages\MSBuild.ExtensionPack.1.8.0\build\net40\MSBuild.ExtensionPack.tasks</MSBuildExtensionPackTasks>
   </PropertyGroup>
   
   <!-- Fallback in case package restore hasn't run -->
