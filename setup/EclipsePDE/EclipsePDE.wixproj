@@ -4,9 +4,9 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>3.10</ProductVersion>
-    <ProjectGuid>5b4fc6c1-8bb5-4398-afc0-01434f929842</ProjectGuid>
+    <ProjectGuid>e0eeb977-32dd-4af9-9b74-3bdf1bb02f31</ProjectGuid>
     <SchemaVersion>2.0</SchemaVersion>
-    <OutputName>EclipseCDT</OutputName>
+    <OutputName>EclipsePDE</OutputName>
     <OutputType>Package</OutputType>
     <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' AND '$(MSBuildExtensionsPath32)' != '' ">$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
     <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' ">$(MSBuildExtensionsPath)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>

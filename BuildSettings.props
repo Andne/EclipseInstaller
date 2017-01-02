@@ -6,6 +6,20 @@
     <EclipseDistribution>cpp</EclipseDistribution>
   </PropertyGroup>
 
+  <!-- Pick the distribution based on the project -->
+  <Choose>
+    <When Condition="'$(MSBuildProjectName)' == 'EclipseCDT'">
+      <PropertyGroup>
+        <EclipseDistribution>cpp</EclipseDistribution>
+      </PropertyGroup>
+    </When>
+    <When Condition="'$(MSBuildProjectName)' == 'EclipsePDE'">
+      <PropertyGroup>
+        <EclipseDistribution>committers</EclipseDistribution>
+      </PropertyGroup>
+    </When>
+  </Choose>
+
   <!-- Shouldn't need to modify this section unless adding more architectures or something -->
   <Choose>
     <When Condition="'$(Platform)' == 'x64'">

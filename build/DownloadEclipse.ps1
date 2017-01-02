@@ -15,8 +15,9 @@ End {
 
 	$VersionParts = $Version.Split('.')
 	$ZipVersion = $VersionParts -join '-'
+	$ZipDistribution = Get-ZipDistributionCode -Distribution $Distribution
 
-	$ZipFilename = "eclipse-$Distribution-$ZipVersion-win32$EclipseArchSuffix.zip"
+	$ZipFilename = "eclipse-$ZipDistribution-$ZipVersion-win32$EclipseArchSuffix.zip"
 
 	$Parameters = @{
 		file = "/technology/epp/downloads/release/$($VersionParts[0])/$($VersionParts[1])/$ZipFilename"
@@ -32,4 +33,16 @@ End {
 
 	Write-Host "Downloading $ZipFilename to $PackageFolder"
 	Invoke-WebRequest -Uri $EclipseDownloadPage -Body $Parameters -Method Get -OutFile (Join-Path $PackageFolder $ZipFilename)
+}
+Begin {
+	function Get-ZipDistributionCode {
+		Param(
+			[parameter(Mandatory = $true)][string]$Distribution
+		)
+
+		switch ($Distribution.ToUpper()) {
+			'CDT' { Write-Output 'cpp' }
+			'PDE' { Write-Output 'committers' }
+		}
+	}
 }

@@ -10,7 +10,10 @@ configuration: Release
 
 environment:
   EclipseRelease: neon.2
-  EclipseDistribution: cpp
+
+  matrix:
+    - EclipseDistribution: CDT
+    - EclipseDistribution: PDE
 
 before_build:
   - ps: build\SetVersionInfo.ps1
@@ -18,7 +21,7 @@ before_build:
   - ps: build\DownloadEclipse.ps1
 
 build:
-  project: setup\EclipseCDT\EclipseCDT.wixproj
+  project: setup\Eclipse$(EclipseDistribution)\Eclipse$(EclipseDistribution).wixproj
 
 artifacts:
-  - path: setup\EclipseCDT\bin\$(Platform)\$(Configuration)\*.msi
+  - path: setup\Eclipse$(EclipseDistribution)\bin\$(Platform)\$(Configuration)\*.msi
