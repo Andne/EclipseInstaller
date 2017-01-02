@@ -1,7 +1,7 @@
 ﻿Param(
-	[parameter(Mandatory = $true)][string]$Version,
-	[parameter(Mandatory = $true)][string]$Distribution,
-	[parameter(Mandatory = $false)][string]$Architecture = 'x64'
+	[parameter(Mandatory = $false)][string]$Version = $env:EclipseRelease,
+	[parameter(Mandatory = $false)][string]$Distribution = $env:EclipseDistribution,
+	[parameter(Mandatory = $false)][string]$Architecture = $env:Platform
 )
 End {
 	$EclipseDownloadPage = 'https://www.eclipse.org/downloads/download.php'
@@ -13,10 +13,13 @@ End {
 		$EclipseArchSuffix = ''
 	}
 
-	$ArchiveFilename = "eclipse-$Distribution-$Version-win32$EclipseArchSuffix.zip"
+	$VersionParts = $Version.Split('.')
+	$ZipVersion = $VersionParts -join '-'
+
+	$ZipFilename = "eclipse-$Distribution-$ZipVersion-win32$EclipseArchSuffix.zip"
 
 	$Parameters = @{
-		file = "/technology/epp/downloads/release/neon/2/$ArchiveFilename"
+		file = "/technology/epp/downloads/release/$($VersionParts[0])/$($VersionParts[1])/$ZipFilename"
 		r = "1"
 	}
 
@@ -27,5 +30,6 @@ End {
 		New-Item -Path $PackageFolder -ItemType Directory | Out-Null
 	}
 
-	Invoke-WebRequest -Uri $EclipseDownloadPage -Body $Parameters -Method Get -OutFile (Join-Path $PackageFolder $ArchiveFilename)
+	Write-Host "Downloading $ZipFilename to $PackageFolder"
+	Invoke-WebRequest -Uri $EclipseDownloadPage -Body $Parameters -Method Get -OutFile (Join-Path $PackageFolder $ZipFilename)
 }

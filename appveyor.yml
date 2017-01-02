@@ -8,9 +8,13 @@ platform:
 
 configuration: Release
 
+environment:
+  EclipseRelease: neon.2
+  EclipseDistribution: cpp
+
 before_build:
   - ps: nuget.exe restore -NonInteractive EclipseInstaller.sln
-  - ps: build\DownloadEclipse.ps1 -Version neon-2 -Distribution cpp -Architecture $env:Platform
+  - ps: build\DownloadEclipse.ps1
 
 build:
   project: setup\EclipseCDT\EclipseCDT.wixproj
