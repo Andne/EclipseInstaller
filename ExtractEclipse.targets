@@ -6,9 +6,11 @@
   </PropertyGroup>
   
   <!-- Fallback in case package restore hasn't run -->
+  <!--
   <PropertyGroup Condition="!exists('$(MSBuildExtensionPackTasks)')">
     <MSBuildExtensionPackTasks>$(MSBuildExtensionsPath32)\ExtensionPack\4.0\MSBuild.Extension.Pack.tasks</MSBuildExtensionPackTasks>
   </PropertyGroup>
+  -->
   
   <Import Project="$(MSBuildExtensionPackTasks)" />
 
