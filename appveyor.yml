@@ -2,7 +2,9 @@
 
 skip_tags: true
 
-platform: x64
+platform:
+  - x64
+  - x86
 
 configuration: Release
 
