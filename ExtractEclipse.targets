@@ -27,18 +27,42 @@
                                            ExtractPath="$(ExtractionFolder)"
                                            ZipFileName="$(MSBuildThisFileDirectory)packages\$(EclipseZipFile)" />
 
-    <!-- Add the just extracted folder to the build -->
+    <!-- Add parts of the just extracted folder to the build -->
     <ItemGroup>
-      <HarvestDirectory Include="$(ExtractionFolder)eclipse">
-        <ComponentGroupName>EclipsePlatform</ComponentGroupName>
-        <SuppressRootDirectory>true</SuppressRootDirectory>
+      <HarvestDirectory Include="$(ExtractionFolder)eclipse\configuration">
+        <ComponentGroupName>EclipseConfiguration</ComponentGroupName>
         <DirectoryRefId>INSTALLFOLDER</DirectoryRefId>
-        <PreprocessorVariable>var.EclipseSourceDir</PreprocessorVariable>
+        <PreprocessorVariable>var.EclipseConfigDir</PreprocessorVariable>
+        <SuppressRegistry>true</SuppressRegistry>
+      </HarvestDirectory>
+      <HarvestDirectory Include="$(ExtractionFolder)eclipse\features">
+        <ComponentGroupName>EclipseFeatures</ComponentGroupName>
+        <DirectoryRefId>INSTALLFOLDER</DirectoryRefId>
+        <PreprocessorVariable>var.EclipseFeaturesDir</PreprocessorVariable>
+        <SuppressRegistry>true</SuppressRegistry>
+      </HarvestDirectory>
+      <HarvestDirectory Include="$(ExtractionFolder)eclipse\p2">
+        <ComponentGroupName>EclipseP2</ComponentGroupName>
+        <DirectoryRefId>INSTALLFOLDER</DirectoryRefId>
+        <PreprocessorVariable>var.EclipseP2Dir</PreprocessorVariable>
+        <SuppressRegistery>true</SuppressRegistery>
+      </HarvestDirectory>
+      <HarvestDirectory Include="$(ExtractionFolder)eclipse\plugins">
+        <ComponentGroupName>EclipsePlugins</ComponentGroupName>
+        <DirectoryRefId>INSTALLFOLDER</DirectoryRefId>
+        <PreprocessorVariable>var.EclipsePluginsDir</PreprocessorVariable>
         <SuppressRegistry>true</SuppressRegistry>
       </HarvestDirectory>
     </ItemGroup>
     <PropertyGroup>
-      <DefineConstants>$(DefineConstants);EclipseSourceDir=$(ExtractionFolder)eclipse</DefineConstants>
+      <DefineConstants>
+        $(DefineConstants);
+        EclipseDir=$(ExtractionFolder)eclipse;
+        EclipseConfigDir=$(ExtractionFolder)eclipse\configuration;
+        EclipseFeaturesDir=$(ExtractionFolder)eclipse\features;
+        EclipseP2Dir=$(ExtractionFolder)eclipse\p2;
+        EclipsePluginsDir=$(ExtractionFolder)eclipse\plugins
+      </DefineConstants>
     </PropertyGroup>
   </Target>
 </Project>

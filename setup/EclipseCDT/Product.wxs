@@ -22,7 +22,12 @@
     <WixVariable Id="WixUILicenseRtf" Value="EPL.rtf" />
 
 		<Feature Id="EclipseCDTFeature" Title="Eclipse CDT Toolset" Level="1">
-			<ComponentGroupRef Id="EclipsePlatform" />
+			<ComponentGroupRef Id="EclipseConfiguration" />
+      <ComponentGroupRef Id="EclipseFeatures" />
+      <ComponentGroupRef Id="EclipsePlugins" />
+      <ComponentGroupRef Id="EclipseP2" />
+      <ComponentGroupRef Id="EclipseExecutables" />
+      <ComponentRef Id="ProgramMenuDir" />
 		</Feature>
 	</Product>
 
@@ -33,6 +38,14 @@
 				  <Directory Id="INSTALLFOLDER" Name="CDT" />
         </Directory>
 			</Directory>
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="EclipseStartMenuFolder" Name="Eclipse $(var.EclipseRelease)">
+          <Component Id="ProgramMenuDir" Guid="524164a3-75e4-45ba-a50a-006c734074c9">
+            <RemoveFolder Id="ProgramMenuDir" On="uninstall" />
+            <RegistryValue Root="HKMU" Key="Software\Eclipse\CDT" Name="install" Type="string" Value="[INSTALLFOLDER]" KeyPath="yes" />
+          </Component>
+        </Directory>
+      </Directory>
 		</Directory>
 	</Fragment>
 </Wix>

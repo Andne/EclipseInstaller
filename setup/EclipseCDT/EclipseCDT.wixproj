@@ -37,6 +37,7 @@
     <IntermediateOutputPath>obj\$(Platform)\$(Configuration)\</IntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="EclipseTopLevelFiles.wxs" />
     <Compile Include="Product.wxs" />
   </ItemGroup>
   <ItemGroup>
