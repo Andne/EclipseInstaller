@@ -9,6 +9,7 @@
           <Shortcut Id="EclipseApplicationShortcut"
                     Name="Eclipse $(var.EclipseRelease) CDT"
                     WorkingDirectory="INSTALLFOLDER"
+                    Icon="cdt.ico"
                     Directory="EclipseStartMenuFolder" Advertise="yes" />
         </File>
         <File Id="eclipse.ini" Source="$(var.EclipseDir)\eclipse.ini" />

@@ -16,6 +16,10 @@
 
 		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
 		<MediaTemplate EmbedCab="yes" />
+    
+    <!-- Include the icon -->
+    <Icon Id="cdt.ico" SourceFile="CDT.ico" />
+    <Property Id="ARPPRODUCTICON" Value="cdt.ico" />
 
     <!-- Show a license agreement at least -->
     <UIRef Id="WixUI_Minimal" />

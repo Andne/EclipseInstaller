@@ -47,6 +47,7 @@
     </WixExtension>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CDT.ico" />
     <Content Include="EPL.rtf" />
   </ItemGroup>
   <Import Project="$(WixTargetsPath)" />
