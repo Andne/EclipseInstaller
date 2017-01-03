@@ -10,8 +10,8 @@
 <?include version.wxi?>
 
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-	<Product Id="*" Manufacturer="Tridigee Solutions" Name="Eclipse $(var.EclipseRelease) CDT Toolset" Language="1033"
-           Version="$(var.FullVersion)" UpgradeCode="$(var.PlatformUpgradeCode)">
+	<Product Id="*" Manufacturer="Tridigee Solutions" Name="Eclipse $(var.EclipseRelease) CDT Toolset"
+           Language="1033" Version="$(var.FullVersion)" UpgradeCode="$(var.PlatformUpgradeCode)">
 		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
 
 		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
