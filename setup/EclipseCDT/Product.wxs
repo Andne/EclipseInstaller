@@ -18,8 +18,8 @@
 		<MediaTemplate EmbedCab="yes" />
     
     <!-- Include the icon -->
-    <Icon Id="cdt.ico" SourceFile="CDT.ico" />
-    <Property Id="ARPPRODUCTICON" Value="cdt.ico" />
+    <Icon Id="platform.ico" SourceFile="CDT.ico" />
+    <Property Id="ARPPRODUCTICON" Value="platform.ico" />
 
     <!-- Show a license agreement at least -->
     <UIRef Id="WixUI_Minimal" />

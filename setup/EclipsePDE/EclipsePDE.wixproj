@@ -28,7 +28,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
     <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
     <IntermediateOutputPath>obj\$(Platform)\$(Configuration)\</IntermediateOutputPath>
-    <DefineConstants>Debug</DefineConstants>
+    <DefineConstants>Debug;EclipsePlatform=PDE</DefineConstants>
     <WixVariables>
     </WixVariables>
   </PropertyGroup>
@@ -37,6 +37,9 @@
     <IntermediateOutputPath>obj\$(Platform)\$(Configuration)\</IntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\Shared\EclipseTopLevelFiles.wxs">
+      <Link>EclipseTopLevelFiles.wxs</Link>
+    </Compile>
     <Compile Include="Product.wxs" />
   </ItemGroup>
   <ItemGroup>
@@ -47,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="EPL.rtf" />
+    <Content Include="PDE.ico" />
   </ItemGroup>
   <Import Project="$(WixTargetsPath)" />
   <Import Project="..\..\ExtractEclipse.targets" />

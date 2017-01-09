@@ -17,13 +17,22 @@
 		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
 		<MediaTemplate EmbedCab="yes" />
 
+    <!-- Include the icon -->
+    <Icon Id="platform.ico" SourceFile="PDE.ico" />
+    <Property Id="ARPPRODUCTICON" Value="platform.ico" />
+
     <!-- Show a license agreement at least -->
     <UIRef Id="WixUI_Minimal" />
     <WixVariable Id="WixUILicenseRtf" Value="EPL.rtf" />
 
-		<Feature Id="EclipsePDEFeature" Title="Eclipse PDE Toolset" Level="1">
-			<ComponentGroupRef Id="EclipsePlatform" />
-		</Feature>
+    <Feature Id="EclipsePDEFeature" Title="Eclipse PDE Toolset" Level="1">
+      <ComponentGroupRef Id="EclipseConfiguration" />
+      <ComponentGroupRef Id="EclipseFeatures" />
+      <ComponentGroupRef Id="EclipsePlugins" />
+      <ComponentGroupRef Id="EclipseP2" />
+      <ComponentGroupRef Id="EclipseExecutables" />
+      <ComponentRef Id="ProgramMenuDir" />
+    </Feature>
 	</Product>
 
 	<Fragment>
@@ -33,6 +42,14 @@
 				  <Directory Id="INSTALLFOLDER" Name="PDE" />
         </Directory>
 			</Directory>
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="EclipseStartMenuFolder" Name="Eclipse $(var.EclipseRelease)">
+          <Component Id="ProgramMenuDir" Guid="d535d1ce-aeff-415f-8353-8f4ce7b2f1f7">
+            <RemoveFolder Id="ProgramMenuDir" On="uninstall" />
+            <RegistryValue Root="HKMU" Key="Software\Eclipse\PDE" Name="install" Type="string" Value="[INSTALLFOLDER]" KeyPath="yes" />
+          </Component>
+        </Directory>
+      </Directory>
 		</Directory>
 	</Fragment>
 </Wix>

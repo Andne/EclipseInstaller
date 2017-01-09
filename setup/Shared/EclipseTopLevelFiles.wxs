@@ -7,9 +7,9 @@
       <Component Id="eclipse.exe" Guid="366b94ab-ea2d-4de3-8012-359df0ee2a33">
         <File Id="eclipse.exe" Source="$(var.EclipseDir)\eclipse.exe" KeyPath="yes">
           <Shortcut Id="EclipseApplicationShortcut"
-                    Name="Eclipse $(var.EclipseRelease) CDT"
+                    Name="Eclipse $(var.EclipseRelease) $(var.EclipsePlatform)"
                     WorkingDirectory="INSTALLFOLDER"
-                    Icon="cdt.ico"
+                    Icon="platform.ico"
                     Directory="EclipseStartMenuFolder" Advertise="yes" />
         </File>
         <File Id="eclipse.ini" Source="$(var.EclipseDir)\eclipse.ini" />
