@@ -31,6 +31,7 @@
       <ComponentGroupRef Id="EclipsePlugins" />
       <ComponentGroupRef Id="EclipseP2" />
       <ComponentGroupRef Id="EclipseExecutables" />
+      <ComponentGroupRef Id="EclipseEmptyDirs" />
       <ComponentRef Id="ProgramMenuDir" />
 		</Feature>
 	</Product>
@@ -39,7 +40,9 @@
 		<Directory Id="TARGETDIR" Name="SourceDir">
 			<Directory Id="$(var.PlatformProgramFilesFolder)">
         <Directory Id="EclipseVersion" Name="Eclipse $(var.EclipseRelease)">
-				  <Directory Id="INSTALLFOLDER" Name="CDT" />
+          <Directory Id="INSTALLFOLDER" Name="CDT">
+            <Directory Id="DropinsFolder" Name="dropins" />
+          </Directory>
         </Directory>
 			</Directory>
       <Directory Id="ProgramMenuFolder">

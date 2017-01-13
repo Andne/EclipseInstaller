@@ -24,5 +24,12 @@
         <File Id="_.eclipseproduct" Source="$(var.EclipseDir)\.eclipseproduct" KeyPath="yes" />
       </Component>
     </ComponentGroup>
+    
+    <ComponentGroup Id="EclipseEmptyDirs">
+      <Component Id="DropinsDir" Guid="29767cbb-37ad-4cf9-8ae7-fa82ff24bf7e"
+                 Directory="DropinsFolder">
+        <CreateFolder />
+      </Component>
+    </ComponentGroup>
 	</Fragment>
 </Wix>
