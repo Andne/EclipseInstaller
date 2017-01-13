@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?if $(var.Platform) = x64 ?>
-  <?define PlatformProgramFilesFolder = "ProgramFiles64Folder" ?>
   <?define PlatformUpgradeCode = "685fcf61-1bf4-4b37-bd49-c1c04d4211cd" ?>
 <?else ?>
-  <?define PlatformProgramFilesFolder = "ProgramFilesFolder" ?>
   <?define PlatformUpgradeCode = "0793f0a2-d97c-4469-a315-8ca0bf9a20bb" ?>
 <?endif ?>
 
@@ -35,24 +33,4 @@
       <ComponentRef Id="ProgramMenuDir" />
     </Feature>
 	</Product>
-
-	<Fragment>
-		<Directory Id="TARGETDIR" Name="SourceDir">
-			<Directory Id="$(var.PlatformProgramFilesFolder)">
-        <Directory Id="EclipseVersion" Name="Eclipse $(var.EclipseRelease)">
-          <Directory Id="INSTALLFOLDER" Name="PDE">
-            <Directory Id="DropinsFolder" Name="dropins" />
-          </Directory>
-        </Directory>
-			</Directory>
-      <Directory Id="ProgramMenuFolder">
-        <Directory Id="EclipseStartMenuFolder" Name="Eclipse $(var.EclipseRelease)">
-          <Component Id="ProgramMenuDir" Guid="d535d1ce-aeff-415f-8353-8f4ce7b2f1f7">
-            <RemoveFolder Id="ProgramMenuDir" On="uninstall" />
-            <RegistryValue Root="HKMU" Key="Software\Eclipse\PDE" Name="install" Type="string" Value="[INSTALLFOLDER]" KeyPath="yes" />
-          </Component>
-        </Directory>
-      </Directory>
-		</Directory>
-	</Fragment>
 </Wix>
