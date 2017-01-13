@@ -54,6 +54,11 @@
         <SuppressRegistry>true</SuppressRegistry>
       </HarvestDirectory>
     </ItemGroup>
+    <ItemGroup>
+      <LinkerBindInputPaths Include="$(ExtractionFolder)eclipse">
+        <BindName>EclipseDir</BindName>
+      </LinkerBindInputPaths>
+    </ItemGroup>
     <PropertyGroup>
       <DefineConstants>
         $(DefineConstants);

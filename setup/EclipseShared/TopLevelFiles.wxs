@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?include version.wxi?>
+
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <ComponentGroup Id="EclipseExecutables" Directory="INSTALLFOLDER">
+      <Component Id="eclipse.exe" Guid="366b94ab-ea2d-4de3-8012-359df0ee2a33">
+        <File Id="eclipse.exe" Source="!(bindpath.EclipseDir)\eclipse.exe" KeyPath="yes">
+          <Shortcut Id="EclipseApplicationShortcut"
+                    Name="Eclipse $(var.EclipseRelease) !(wix.EclipsePlatform)"
+                    WorkingDirectory="INSTALLFOLDER"
+                    Icon="platform.ico"
+                    Directory="EclipseStartMenuFolder" Advertise="yes" />
+        </File>
+        <File Id="eclipse.ini" Source="!(bindpath.EclipseDir)\eclipse.ini" />
+      </Component>
+      <Component Id="eclipsec.exe">
+        <File Id="eclipsec.exe" Source="!(bindpath.EclipseDir)\eclipsec.exe" KeyPath="yes" />
+      </Component>
+      <Component Id="artifacts.xml">
+        <File Id="artifacts.xml" Source="!(bindpath.EclipseDir)\artifacts.xml" KeyPath="yes" />
+      </Component>
+      <Component Id="_.eclipseproduct">
+        <File Id="_.eclipseproduct" Source="!(bindpath.EclipseDir)\.eclipseproduct" KeyPath="yes" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+
+  <Fragment>
+    <ComponentGroup Id="EclipseEmptyDirs">
+      <Component Id="DropinsDir" Guid="29767cbb-37ad-4cf9-8ae7-fa82ff24bf7e"
+                 Directory="DropinsFolder">
+        <CreateFolder />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+</Wix>
