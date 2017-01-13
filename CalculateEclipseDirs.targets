@@ -1,33 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-
-  <PropertyGroup>
-    <MSBuildExtensionPackTasks>$(MSBuildThisFileDirectory)packages\MSBuild.Extension.Pack.1.8.0\build\net40\MSBuild.Extension.Pack.targets</MSBuildExtensionPackTasks>
-  </PropertyGroup>
-  
-  <!-- Fallback in case package restore hasn't run -->
-  <PropertyGroup Condition="!exists('$(MSBuildExtensionPackTasks)')">
-    <MSBuildExtensionPackTasks>$(MSBuildExtensionsPath32)\ExtensionPack\4.0\MSBuild.Extension.Pack.tasks</MSBuildExtensionPackTasks>
-  </PropertyGroup>
-  
-  <Import Project="$(MSBuildExtensionPackTasks)" />
-
   <PropertyGroup>
     <HarvestDependsOn>
-      ExtractEclipse;
+      CalculateEclipseDirs;
       $(HarvestDependsOn)
     </HarvestDependsOn>
   </PropertyGroup>
 
-  <Target Name="ExtractEclipse">
-    <!-- Remove any previously extracted folder, extract the zip file -->
-    <RemoveDir Condition="exists('$(ExtractionFolder)')"
-               Directories="$(ExtractionFolder)" ContinueOnError="true" />
-    <MSBuild.ExtensionPack.Compression.Zip TaskAction="Extract"
-                                           ExtractPath="$(ExtractionFolder)"
-                                           ZipFileName="$(MSBuildThisFileDirectory)packages\$(EclipseZipFile)" />
-
-    <!-- Add parts of the just extracted folder to the build -->
+  <Target Name="CalculateEclipseDirs">
+    <!-- Add parts of the eclipse folder to the build -->
     <ItemGroup>
       <HarvestDirectory Include="$(ExtractionFolder)eclipse\configuration">
         <ComponentGroupName>EclipseConfiguration</ComponentGroupName>

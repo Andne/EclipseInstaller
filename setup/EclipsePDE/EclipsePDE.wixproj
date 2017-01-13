@@ -60,5 +60,5 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(WixTargetsPath)" />
-  <Import Project="..\..\ExtractEclipse.targets" />
+  <Import Project="..\..\CalculateEclipseDirs.targets" />
 </Project>

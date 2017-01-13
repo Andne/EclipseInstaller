@@ -26,13 +26,23 @@ End {
 
 	$ProjectRoot = Split-Path $PSScriptRoot
 	$PackageFolder = Join-Path -Path $ProjectRoot -ChildPath packages
+	$ExtractionFolder = Join-Path -Path $PackageFolder -ChildPath "Eclipse$($Distribution)_$($Architecture)"
 
 	if (-not (Test-Path $PackageFolder)) {
 		New-Item -Path $PackageFolder -ItemType Directory | Out-Null
 	}
+	elseif (Test-Path $PackageFolder) {
+		Remove-Item -Recurse $ExtractionFolder
+	}
 
+	# Download eclipse from the webserver
 	Write-Host "Downloading $ZipFilename to $PackageFolder"
 	Invoke-WebRequest -Uri $EclipseDownloadPage -Body $Parameters -Method Get -OutFile (Join-Path $PackageFolder $ZipFilename)
+
+	# Extract eclipse
+	Write-Host "Extracting $ZipFilename to $ExtractionFolder"
+	Add-Type -AssemblyName System.IO.Compression.FileSystem
+	[System.IO.Compression.ZipFile]::ExtractToDirectory((Join-Path $PackageFolder $ZipFilename), $ExtractionFolder)
 }
 Begin {
 	function Get-ZipDistributionCode {
