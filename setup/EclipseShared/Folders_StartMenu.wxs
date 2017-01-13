@@ -18,7 +18,7 @@
       </Directory>
       <Directory Id="ProgramMenuFolder">
         <Directory Id="EclipseStartMenuFolder" Name="Eclipse $(var.EclipseRelease)">
-          <Component Id="ProgramMenuDir" Guid="524164a3-75e4-45ba-a50a-006c734074c9">
+          <Component Id="ProgramMenuDir" Guid="!(wix.RegistryGUID)">
             <RemoveFolder Id="ProgramMenuDir" On="uninstall" />
             <RegistryValue Root="HKMU" Key="Software\Eclipse\$(var.EclipseRelease)\!(wix.EclipsePlatform)" Name="install" Type="string" Value="[INSTALLFOLDER]" KeyPath="yes" />
           </Component>

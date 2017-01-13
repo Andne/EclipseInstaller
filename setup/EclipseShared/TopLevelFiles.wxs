@@ -4,7 +4,7 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <Fragment>
     <ComponentGroup Id="EclipseExecutables" Directory="INSTALLFOLDER">
-      <Component Id="eclipse.exe" Guid="366b94ab-ea2d-4de3-8012-359df0ee2a33">
+      <Component Id="eclipse.exe" Guid="!(wix.EclipseExeGUID)">
         <File Id="eclipse.exe" Source="!(bindpath.EclipseDir)\eclipse.exe" KeyPath="yes">
           <Shortcut Id="EclipseApplicationShortcut"
                     Name="Eclipse $(var.EclipseRelease) !(wix.EclipsePlatform)"
@@ -28,8 +28,7 @@
 
   <Fragment>
     <ComponentGroup Id="EclipseEmptyDirs">
-      <Component Id="DropinsDir" Guid="29767cbb-37ad-4cf9-8ae7-fa82ff24bf7e"
-                 Directory="DropinsFolder">
+      <Component Id="DropinsDir" Guid="!(wix.DropinsGUID)" Directory="DropinsFolder">
         <CreateFolder />
       </Component>
     </ComponentGroup>

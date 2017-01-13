@@ -23,6 +23,11 @@
     <UIRef Id="WixUI_Minimal" />
     <WixVariable Id="WixUILicenseRtf" Value="EPL.rtf" />
 
+    <!-- WixVariables of the component GUIDs to avoid overlaps -->
+    <WixVariable Id="EclipseExeGUID" Value="{15D52E9B-D581-4F9C-B8A4-2DD52E878B09}" />
+    <WixVariable Id="DropinsGUID" Value="{ABD0EBD7-FA5B-401E-8E6C-407EE750433F}" />
+    <WixVariable Id="RegistryGUID" Value="{606EFB99-C21E-4464-A270-591855DE8AC8}" />
+
     <Feature Id="EclipsePDEFeature" Title="Eclipse PDE Toolset" Level="1">
       <ComponentGroupRef Id="EclipseConfiguration" />
       <ComponentGroupRef Id="EclipseFeatures" />

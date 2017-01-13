@@ -23,6 +23,11 @@
     <UIRef Id="WixUI_Minimal" />
     <WixVariable Id="WixUILicenseRtf" Value="EPL.rtf" />
 
+    <!-- WixVariables of the component GUIDs to avoid overlaps -->
+    <WixVariable Id="EclipseExeGUID" Value="{97BD5B90-01E4-447D-8E8A-F041012800BF}" />
+    <WixVariable Id="DropinsGUID" Value="{59126111-A374-4E30-A86A-75DC59C97789}" />
+    <WixVariable Id="RegistryGUID" Value="{DCDAF5AB-2C92-4007-B425-17A8D5C7C373}" />
+
 		<Feature Id="EclipseCDTFeature" Title="Eclipse CDT Toolset" Level="1">
 			<ComponentGroupRef Id="EclipseConfiguration" />
       <ComponentGroupRef Id="EclipseFeatures" />
