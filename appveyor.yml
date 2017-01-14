@@ -17,7 +17,7 @@ before_build:
   - ps: build\DownloadEclipse.ps1 -Architecture x86
   - ps: build\DownloadEclipse.ps1 -Architecture x64
 
-build:
+build_script:
   - msbuild setup\Eclipse$(EclipseDistribution)\Eclipse$(EclipseDistribution).wixproj /p:Platform=x86
   - msbuild setup\Eclipse$(EclipseDistribution)\Eclipse$(EclipseDistribution).wixproj /p:Platform=x64
 
