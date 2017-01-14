@@ -9,6 +9,7 @@
     <BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.RtfLicense">
       <bal:WixStandardBootstrapperApplication
             LicenseFile="EPL.rtf"
+            LogoFile="Eclipse.png"
             SuppressOptionsUI="yes" />
     </BootstrapperApplicationRef>
     <Chain>

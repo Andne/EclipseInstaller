@@ -51,6 +51,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Eclipse.png" />
     <Content Include="EPL.rtf" />
   </ItemGroup>
   <Import Project="$(WixTargetsPath)" />
