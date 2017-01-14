@@ -22,4 +22,4 @@ build_script:
   - ps: msbuild setup\Eclipse$($env:EclipseDistribution)\Eclipse$($env:EclipseDistribution)_x64.wixproj /p:Platform=x64
 
 artifacts:
-  - path: setup\Eclipse$(EclipseDistribution)\bin\*\$(Configuration)\*.msi
+  - path: deploy\$(Configuration)\Eclipse$(EclipseDistribution)-*.msi
