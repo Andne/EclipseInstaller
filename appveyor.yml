@@ -2,10 +2,6 @@
 
 skip_tags: true
 
-platform:
-  - x64
-  - x86
-
 configuration: Release
 
 environment:
@@ -18,10 +14,12 @@ environment:
 before_build:
   - ps: build\SetVersionInfo.ps1
   - ps: nuget.exe restore -NonInteractive EclipseInstaller.sln
-  - ps: build\DownloadEclipse.ps1
+  - ps: build\DownloadEclipse.ps1 -Architecture x86
+  - ps: build\DownloadEclipse.ps1 -Architecture x64
 
 build:
-  project: setup\Eclipse$(EclipseDistribution)\Eclipse$(EclipseDistribution).wixproj
+  - msbuild setup\Eclipse$(EclipseDistribution)\Eclipse$(EclipseDistribution).wixproj /p:Platform=x86
+  - msbuild setup\Eclipse$(EclipseDistribution)\Eclipse$(EclipseDistribution).wixproj /p:Platform=x64
 
 artifacts:
-  - path: setup\Eclipse$(EclipseDistribution)\bin\$(Platform)\$(Configuration)\*.msi
+  - path: setup\Eclipse$(EclipseDistribution)\bin\*\$(Configuration)\*.msi

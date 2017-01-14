@@ -1,7 +1,7 @@
 ﻿Param(
 	[parameter(Mandatory = $false)][string]$Version = $env:EclipseRelease,
 	[parameter(Mandatory = $false)][string]$Distribution = $env:EclipseDistribution,
-	[parameter(Mandatory = $false)][string]$Architecture = $env:Platform
+	[parameter(Mandatory = $false)][string]$Architecture
 )
 End {
 	$EclipseDownloadPage = 'https://www.eclipse.org/downloads/download.php'
