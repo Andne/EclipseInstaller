@@ -31,7 +31,7 @@ End {
 	if (-not (Test-Path $PackageFolder)) {
 		New-Item -Path $PackageFolder -ItemType Directory | Out-Null
 	}
-	elseif (Test-Path $PackageFolder) {
+	elseif (Test-Path $ExtractionFolder) {
 		Remove-Item -Recurse $ExtractionFolder
 	}
 
