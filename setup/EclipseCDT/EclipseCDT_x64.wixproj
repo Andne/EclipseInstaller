@@ -2,39 +2,28 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
     <ProductVersion>3.10</ProductVersion>
-    <ProjectGuid>e0eeb977-32dd-4af9-9b74-3bdf1bb02f31</ProjectGuid>
+    <ProjectGuid>{692fb3cb-a3dc-405a-8a22-9258bc95432d}</ProjectGuid>
     <SchemaVersion>2.0</SchemaVersion>
-    <OutputName>EclipsePDE</OutputName>
+    <OutputName>EclipseCDT-x64</OutputName>
     <OutputType>Package</OutputType>
     <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' AND '$(MSBuildExtensionsPath32)' != '' ">$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
     <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' ">$(MSBuildExtensionsPath)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
-    <Name>EclipseCDT</Name>
+    <Name>EclipseCDT_x86</Name>
     <IncludeSearchPaths>..\..\build\include\</IncludeSearchPaths>
   </PropertyGroup>
   <Import Project="..\..\BuildSettings.props" />
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
-    <IntermediateOutputPath>obj\$(Platform)\$(Configuration)\</IntermediateOutputPath>
-    <DefineConstants>Debug</DefineConstants>
-    <WixVariables>EclipsePlatform=PDE</WixVariables>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
-    <IntermediateOutputPath>obj\$(Platform)\$(Configuration)\</IntermediateOutputPath>
-    <WixVariables>EclipsePlatform=PDE</WixVariables>
-  </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
     <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
     <IntermediateOutputPath>obj\$(Platform)\$(Configuration)\</IntermediateOutputPath>
     <DefineConstants>Debug</DefineConstants>
-    <WixVariables>EclipsePlatform=PDE</WixVariables>
+    <WixVariables>EclipsePlatform=CDT</WixVariables>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
     <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
     <IntermediateOutputPath>obj\$(Platform)\$(Configuration)\</IntermediateOutputPath>
-    <WixVariables>EclipsePlatform=PDE</WixVariables>
+    <WixVariables>EclipsePlatform=CDT</WixVariables>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Product.wxs" />
@@ -46,8 +35,8 @@
     </WixExtension>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CDT.ico" />
     <Content Include="EPL.rtf" />
-    <Content Include="PDE.ico" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EclipseShared\EclipseShared.wixproj">

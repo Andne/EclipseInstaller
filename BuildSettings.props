@@ -36,7 +36,7 @@
 
   <!-- Calculate properties from the above values -->
   <PropertyGroup>
-    <ExtractionFolder>$(MSBuildThisFileDirectory)packages\$(MSBuildProjectName)_$(Platform)\</ExtractionFolder>
+    <ExtractionFolder>$(MSBuildThisFileDirectory)packages\$(MSBuildProjectName)\</ExtractionFolder>
     <EclipseZipFile>eclipse-$(EclipseDistribution)-$(EclipseVersion)-$(EclipseArchitecture).zip</EclipseZipFile>
     <ExtractionFolderRelative>$([MSBuild]::MakeRelative($(MSBuildProjectFileDirectory), $(ExtractionFolder)))</ExtractionFolderRelative>
   </PropertyGroup>

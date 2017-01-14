@@ -18,8 +18,8 @@ before_build:
   - ps: build\DownloadEclipse.ps1 -Architecture x64
 
 build_script:
-  - ps: msbuild setup\Eclipse$($env:EclipseDistribution)\Eclipse$($env:EclipseDistribution).wixproj /p:Platform=x86
-  - ps: msbuild setup\Eclipse$($env:EclipseDistribution)\Eclipse$($env:EclipseDistribution).wixproj /p:Platform=x64
+  - ps: msbuild setup\Eclipse$($env:EclipseDistribution)\Eclipse$($env:EclipseDistribution)_x86.wixproj /p:Platform=x86
+  - ps: msbuild setup\Eclipse$($env:EclipseDistribution)\Eclipse$($env:EclipseDistribution)_x64.wixproj /p:Platform=x64
 
 artifacts:
   - path: setup\Eclipse$(EclipseDistribution)\bin\*\$(Configuration)\*.msi
