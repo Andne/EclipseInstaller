@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?include version.wxi?>
+<?include $(var.EclipseRelease)ProductGUIDS.wxi?>
+
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:bal="http://schemas.microsoft.com/wix/BalExtension">
+  <Bundle Name="Eclipse $(var.EclipseRelease)" Manufacturer="Tridigee Solutions"
+          Version="$(var.FullVersion)" UpgradeCode="$(var.BootstrapperGUID)">
+    <BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.RtfLicense">
+      <bal:WixStandardBootstrapperApplication
+            LicenseFile="EPL.rtf"
+            SuppressOptionsUI="yes" />
+    </BootstrapperApplicationRef>
+    <Chain>
+      <MsiPackage Name="$(var.EclipseCDT_x86.TargetFileName)"
+                  SourceFile="$(var.EclipseCDT_x86.TargetPath)"
+                  Compressed="no" InstallCondition="NOT VersionNT64" />
+      <MsiPackage Name="$(var.EclipseCDT_x64.TargetFileName)"
+                  SourceFile="$(var.EclipseCDT_x64.TargetPath)"
+                  Compressed="no" InstallCondition="VersionNT64" />
+    </Chain>
+  </Bundle>
+</Wix>

@@ -34,6 +34,9 @@
     <Compile Include="TopLevelFiles.wxs" />
     <Compile Include="Folders_StartMenu.wxs" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="NeonProductGUIDS.wxi" />
+  </ItemGroup>
   <Import Project="$(WixTargetsPath)" />
   <!--
 	To modify your build process, add your task inside one of the targets below and uncomment it.
