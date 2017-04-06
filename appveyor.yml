@@ -5,7 +5,7 @@ skip_tags: true
 configuration: Release
 
 environment:
-  EclipseRelease: neon.2
+  EclipseRelease: neon.3
 
   matrix:
     - EclipseDistribution: CDT
