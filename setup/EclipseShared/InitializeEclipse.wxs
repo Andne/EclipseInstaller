@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?if $(var.Platform) = x64 ?>
+  <?define QuietExecEntry = "WixQuietExec64" ?>
+  <?define QuietExecCmdProp = "WixQuietExec64CmdLine" ?>
+<?else ?>
+  <?define QuietExecEntry = "WixQuietExec" ?>
+  <?define QuietExecCmdProp = "WixQuietExecCmdLine" ?>
+<?endif ?>
+
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <CustomAction Id="SetInitEclipseCommand" Property="InitEclipse" Value="&quot;[INSTALLFOLDER]eclipsec.exe&quot; -initialize -nosplash" />
+    <CustomAction Id="InitEclipse" BinaryKey="WixCA" DllEntry="$(var.QuietExecEntry)" Execute="deferred" Return="ignore" Impersonate="no" />
+
+    <InstallExecuteSequence>
+      <Custom Action="SetInitEclipseCommand" Before="InitEclipse" />
+      <Custom Action="InitEclipse" After="InstallFiles" />
+    </InstallExecuteSequence>
+  </Fragment>
+</Wix>

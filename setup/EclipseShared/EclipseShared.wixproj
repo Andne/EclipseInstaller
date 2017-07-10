@@ -34,6 +34,7 @@
     <IntermediateOutputPath>obj\$(Platform)\$(Configuration)\</IntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="InitializeEclipse.wxs" />
     <Compile Include="TopLevelFiles.wxs" />
     <Compile Include="Folders_StartMenu.wxs" />
   </ItemGroup>

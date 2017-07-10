@@ -37,5 +37,8 @@
       <ComponentGroupRef Id="EclipseEmptyDirs" />
       <ComponentRef Id="ProgramMenuDir" />
     </Feature>
-	</Product>
+
+    <!-- Make sure we initialize eclipse -->
+    <CustomActionRef Id="InitEclipse" />
+  </Product>
 </Wix>
