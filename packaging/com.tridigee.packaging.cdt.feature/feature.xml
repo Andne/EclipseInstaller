@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.tridigee.packaging.cdt.feature"
+      label="Tridigee Eclipse CDT Tooling"
+      version="4.6.3.qualifier"
+      plugin="com.tridigee.packaging.cdt"
+      license-feature="org.eclipse.license"
+      license-feature-version="0.0.0">
+
+   <description url="http://eclipse.org/epp">
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <plugin
+         id="com.tridigee.packaging.cdt"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+</feature>

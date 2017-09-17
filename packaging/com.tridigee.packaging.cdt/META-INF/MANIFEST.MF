@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: C/C++ IDE
+Bundle-SymbolicName: com.tridigee.packaging.cdt;singleton:=true
+Bundle-Version: 4.6.3.qualifier
+Bundle-Vendor: Tridigee Solutions
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: org.eclipse.platform,
+ org.eclipse.equinox.app,
+ org.eclipse.ui.intro
+Eclipse-BundleShape: dir
+Bundle-Localization: plugin
