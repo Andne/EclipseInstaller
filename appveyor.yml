@@ -9,15 +9,14 @@ environment:
 
   matrix:
     - EclipseDistribution: CDT
-    - EclipseDistribution: PDE
+#    - EclipseDistribution: PDE
 
 before_build:
   - ps: build\SetVersionInfo.ps1
   - ps: nuget.exe restore -NonInteractive EclipseInstaller.sln
-  - ps: build\DownloadEclipse.ps1 -Architecture x86
-  - ps: build\DownloadEclipse.ps1 -Architecture x64
 
 build_script:
+  - ps: mvn -P com.tridigee.$($env:EclipseDistribution.toLower()) clean verify
   - ps: msbuild setup\Eclipse$($env:EclipseDistribution)\Eclipse$($env:EclipseDistribution)_x86.wixproj /p:Platform=x86
   - ps: msbuild setup\Eclipse$($env:EclipseDistribution)\Eclipse$($env:EclipseDistribution)_x64.wixproj /p:Platform=x64
 

@@ -8,14 +8,16 @@
 
   <!-- Pick the distribution based on the project -->
   <Choose>
-    <When Condition="'$(MSBuildProjectName)' == 'EclipseCDT'">
+    <When Condition="$(MSBuildProjectName.StartsWith('EclipseCDT'))">
       <PropertyGroup>
-        <EclipseDistribution>cpp</EclipseDistribution>
+        <EclipseProject>com.tridigee.packaging.cdt.product</EclipseProject>
+        <EclipseProduct>com.tridigee.cdt</EclipseProduct>
       </PropertyGroup>
     </When>
-    <When Condition="'$(MSBuildProjectName)' == 'EclipsePDE'">
+    <When Condition="$(MSBuildProjectName.StartsWith('EclipsePDE'))">
       <PropertyGroup>
-        <EclipseDistribution>committers</EclipseDistribution>
+        <EclipseProject>com.tridigee.packaging.pde.product</EclipseProject>
+        <EclipseProduct>com.tridigee.pde</EclipseProduct>
       </PropertyGroup>
     </When>
   </Choose>
@@ -24,20 +26,19 @@
   <Choose>
     <When Condition="'$(Platform)' == 'x64'">
       <PropertyGroup>
-        <EclipseArchitecture>win32-x86_64</EclipseArchitecture>
+        <EclipseArchitecture>x86_64</EclipseArchitecture>
       </PropertyGroup>
     </When>
     <Otherwise>
       <PropertyGroup>
-        <EclipseArchitecture>win32</EclipseArchitecture>
+        <EclipseArchitecture>x86</EclipseArchitecture>
       </PropertyGroup>
     </Otherwise>
   </Choose>
 
   <!-- Calculate properties from the above values -->
   <PropertyGroup>
-    <ExtractionFolder>$(MSBuildThisFileDirectory)packages\$(MSBuildProjectName)\</ExtractionFolder>
-    <EclipseZipFile>eclipse-$(EclipseDistribution)-$(EclipseVersion)-$(EclipseArchitecture).zip</EclipseZipFile>
+    <ExtractionFolder>$(MSBuildThisFileDirectory)products\$(EclipseProduct)\$(EclipseArchitecture)\</ExtractionFolder>
     <ExtractionFolderRelative>$([MSBuild]::MakeRelative($(MSBuildProjectFileDirectory), $(ExtractionFolder)))</ExtractionFolderRelative>
   </PropertyGroup>
 
