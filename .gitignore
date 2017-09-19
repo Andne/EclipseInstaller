@@ -23,7 +23,7 @@ bld/
 
 # Eclipse project build output
 target/
-/archive
+/products
 
 # Visual Studio 2015 cache/options directory
 .vs/
