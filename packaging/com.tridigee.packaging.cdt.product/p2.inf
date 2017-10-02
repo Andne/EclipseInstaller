@@ -20,3 +20,11 @@ update.id = com.tridigee.cdt
 update.range = [4.6.0.20160301-1200, $version$)
 update.severity = 0
 update.description = Eclipse package upgrade from versions before Eclipse Neon (4.6) is not possible. See bug 332989.
+
+requires.0.namespace = org.eclipse.equinox.p2.iu
+requires.0.name = org.eclipse.cdt
+requires.0.filter = (org.eclipse.epp.install.roots=true)
+
+requires.0.namespace = org.eclipse.equinox.p2.iu
+requires.0.name = org.eclipse.egit
+requires.0.filter = (org.eclipse.epp.install.roots=true)
