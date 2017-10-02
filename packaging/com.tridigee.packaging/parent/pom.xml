@@ -64,6 +64,11 @@
       <url>${eclipse.simultaneous.release.repository}</url>
     </repository>
     <repository>
+      <id>tools-cdt-release</id>
+      <layout>p2</layout>
+      <url>http://download.eclipse.org/tools/cdt/releases/9.2/</url>
+    </repository>
+    <repository>
       <id>license-feature</id>
       <url>http://download.eclipse.org/cbi/updates/license/</url>
       <layout>p2</layout>
