@@ -23,7 +23,7 @@ before_build:
   - ps: nuget.exe restore -NonInteractive EclipseInstaller.sln
 
 build_script:
-  - ps: mvn -P com.tridigee.$($env:EclipseDistribution.toLower()) clean verify
+  - ps: mvn -B -P com.tridigee.$($env:EclipseDistribution.toLower()) clean verify
   - ps: msbuild setup\Eclipse$($env:EclipseDistribution)\Eclipse$($env:EclipseDistribution)_x86.wixproj /p:Platform=x86
   - ps: msbuild setup\Eclipse$($env:EclipseDistribution)\Eclipse$($env:EclipseDistribution)_x64.wixproj /p:Platform=x64
 
