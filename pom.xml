@@ -7,13 +7,13 @@
   <parent>
     <groupId>com.tridigee.packaging</groupId>
     <artifactId>com.tridigee.packaging-parent</artifactId>
-    <version>4.6.3-SNAPSHOT</version>
+    <version>4.7.3-SNAPSHOT</version>
     <relativePath>packaging/com.tridigee.packaging/parent/</relativePath>
   </parent>
 
   <groupId>com.tridigee.packaging</groupId>
   <artifactId>com.tridigee.packaging-buildall</artifactId>
-  <version>4.6.3-SNAPSHOT</version>
+  <version>4.7.3-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <profiles>

@@ -2,7 +2,7 @@
 <feature
       id="com.tridigee.packaging.cdt.feature"
       label="Tridigee Eclipse CDT Tooling"
-      version="4.6.3.qualifier"
+      version="4.7.3.qualifier"
       plugin="com.tridigee.packaging.cdt"
       license-feature="org.eclipse.license"
       license-feature-version="0.0.0">
@@ -19,16 +19,16 @@
       %license
    </license>
 
-   <plugin
-         id="com.tridigee.packaging.cdt"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"/>
-         
    <requires>
       <import feature="org.eclipse.epp.mpc"/>
       <import feature="org.eclipse.epp.logging.aeri.feature"/>
       <import feature="org.eclipse.oomph.setup"/>
    </requires>
+
+   <plugin
+         id="com.tridigee.packaging.cdt"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
 
 </feature>

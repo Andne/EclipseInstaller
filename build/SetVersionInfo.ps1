@@ -53,6 +53,7 @@ Begin {
 			'luna'   { Write-Output '4.4' }
 			'mars'   { Write-Output '4.5' }
 			'neon'   { Write-Output '4.6' }
+			'oxygen' { Write-Output '4.7' }
 		}
 	}
 
