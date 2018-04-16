@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Include>
-  <?define BootstrapperGUID=8608bd33-bcc6-4483-9bec-efa67ea00605?>	
+  <?define BootstrapperGUID=8608bd33-bcc6-4483-9bec-efa67ea00605?>
+  
+  <?define CDTx64GUID=e4699ea8-c468-4e54-9fcb-80816b365d0b?>
+  <?define CDTx86GUID=9695bb3d-4186-4d6c-93d1-ee56cf78e0f6?>
+  
+  <?define PDEx64GUID=372167b8-5287-4d72-b662-62b7768fb82b?>
+  <?define PDEx86GUID=78cbc0ba-4870-421b-a548-9104e3c50f42?>
 </Include>

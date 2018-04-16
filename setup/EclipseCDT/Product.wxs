@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?if $(var.Platform) = x64 ?>
-  <?define PlatformUpgradeCode = "d3947a15-9cbc-4f50-9887-c89331981e88" ?>
-<?else ?>
-  <?define PlatformUpgradeCode = "586b6704-937c-4413-bb59-ffc83787afff" ?>
-<?endif ?>
 
 <?include version.wxi?>
+<?include OxygenProductGUIDS.wxi?>
+
+<?if $(var.Platform) = x64 ?>
+  <?define PlatformUpgradeCode = $(var.CDTx64GUID) ?>
+<?else ?>
+  <?define PlatformUpgradeCode = $(var.CDTx86GUID) ?>
+<?endif ?>
 
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
 	<Product Id="*" Manufacturer="Tridigee Solutions" Name="Eclipse $(var.EclipseRelease) CDT Toolset"
