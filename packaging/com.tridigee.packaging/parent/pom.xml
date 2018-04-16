@@ -33,7 +33,7 @@
     <!-- Human readable name of the release, e.g. used in the about dialog (see about.mappings) -->
     <eclipse.simultaneous.release.name>Oxygen.3a Release (4.7.3a)</eclipse.simultaneous.release.name>
     <!-- Upstream p2 repository, used as a source for pre-compiled build artifacts -->
-    <eclipse.simultaneous.release.repository>http://download.eclipse.org/staging/oxygen/</eclipse.simultaneous.release.repository>
+    <eclipse.simultaneous.release.repository>http://download.eclipse.org/releases/oxygen/</eclipse.simultaneous.release.repository>
   </properties>
 
   <!--
